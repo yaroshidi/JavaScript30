@@ -13,19 +13,19 @@
       <kbd>A</kbd>
       <span class="sound">C Major</span>
     </button>
-    <button data-key="83" class="key">
+    <button data-key="83" class="key" onclick="playAudio('chords/GMajor_Chord.wav')">
       <kbd>S</kbd>
       <span class="sound">G Major</span>
     </button>
-    <button data-key="68" class="key">
+    <button data-key="68" class="key" onclick="playAudio('chords/AMinor_Chord.wav')">
       <kbd>D</kbd>
       <span class="sound">A Minor</span>
     </button>
-    <button data-key="70" class="key">
+    <button data-key="70" class="key" onclick="playAudio('chords/FMajor_Chord.wav')">
       <kbd>F</kbd>
       <span class="sound">F Major</span>
     </button>
-    <button data-key="71" class="key">
+    <button data-key="71" class="key" onclick="playAudio('chords/DMajor_Chord.wav')">
       <kbd>G</kbd>
       <span class="sound">D Major</span>
     </button>
@@ -45,7 +45,7 @@
 
 
   function playSound(e) {
-    var audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
     // if (!audio) return;
 
@@ -54,16 +54,13 @@
     audio.play();
   }
 
-  function playAudio (src) {
-    window.audio = new Audio (src);
-    window.audio.play();
-}
+    function playAudio(url) {
+      new Audio(url).play();
+    }
 
 
   const keys = Array.from(document.querySelectorAll('.key'));
-  // const btn = Array.from(document.querySelectorAll('.button'));
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  // btn.forEach(btn => btn.addEventListener('click', playSound));
   window.addEventListener('keydown', playSound);
 
 </script>
